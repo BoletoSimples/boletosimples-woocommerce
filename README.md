@@ -1,8 +1,8 @@
 # Boleto Simples WooCommerce #
-**Contributors:** claudiosanches  
+**Contributors:** claudiosanches, kivanio  
 **Tags:** checkout, billet, boleto, boletosimples  
 **Requires at least:** 3.5  
-**Tested up to:** 3.9  
+**Tested up to:** 3.9
 **Stable tag:** 1.0.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
@@ -29,27 +29,6 @@ O Boleto Bancário é uma forma de pagamento exclusiva do Brasil. Qualquer pesso
 
 A integração é completa para vender por boleto e ainda conta com sistema de retorno que avisa quando o boleto é pago, atualizando o status do seu pedido para *processando*.
 
-É possível integrar com os seguintes bancos:
-
-* Banco do Brasil
-* Banespa
-* Banrisul
-* Santander
-* Sicredi
-* Real
-* Itaú
-* Bradesco
-* HSBC
-* Caixa Econômica Federal
-* Nossa Caixa
-* BCN
-* Sudameris
-* FINASA
-* Unibanco
-* Safra
-* Citibank
-* Bancoob/Sicoob
-
 ### Instalação ###
 
 Instalar é bem simples, basta seguir o nosso [guia de instalação](http://wordpress.org/extend/plugins/boletosimples-woocommerce/installation/).
@@ -63,12 +42,12 @@ Compatível com as versões 2.0.x e 2.1.x do WooCommerce.
 Você pode esclarecer suas dúvidas usando:
 
 * A nossa sessão de [FAQ](http://wordpress.org/extend/plugins/boletosimples-woocommerce/faq/).
-* Criando um tópico no [fórum do GitHub](https://github.com/Boleto Simples/boletosimples-woocommerce/issues).
+* Criando um tópico no [fórum do GitHub](https://github.com/BoletoSimples/boletosimples-woocommerce/issues).
 * Criando um tópico no [fórum de ajuda do WordPress](http://wordpress.org/support/plugin/boletosimples-woocommerce) (apenas em inglês).
 
 ### Coloborar ###
 
-Você pode contribuir com código-fonte em nossa página no [GitHub](https://github.com/Boleto Simples/boletosimples-woocommerce).
+Você pode contribuir com código-fonte em nossa página no [GitHub](https://github.com/BoletoSimples/boletosimples-woocommerce).
 
 ## Installation ##
 
@@ -79,22 +58,16 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 
 ### Configuração do Boleto Simples ###
 
-1. Crie uma conta e contrate um Plano Pago no [Boleto Simples](http://boletosimples.com.br/planos/);
-2. Com a conta é possível gerar um Token em [Boleto Simples - Minhas informações](https://app.boletosimples.com.br/myinfo);
-3. E finalmente crie uma notificação em [Boleto Simples - Notificações](https://app.boletosimples.com.br/web_hooks/new);
-4. Na notificação criada:;
-5. Escolha o evento 'Pago';
-6. Escolha a situação 'Ativo';
-7. Crie um **Código de Segurança**;
-8. E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
-9. Pronto, conta configurada.
+1. Crie uma conta no [Boleto Simples](http://boletosimples.com.br/);
+2. Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
+3. E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
+4. Pronto, conta configurada.
 
 ### Configuração do plugin ###
 
 1. Vá até `WooCommerce > Configurações > Finalizar compra > Boleto Simples`;
 2. Habilite o **Boleto Simples** e preencha como preferir as opções de *Título* de *Descrição*;
 3. Digite o token gerado na sua conta do **Boleto Simples**;
-4. Por final preencha também a opção *Código de segurança da notificação*;
 5. Salve as configurações;
 6. Vá até `WooCommerce > Configurações > Produtos > Inventário`;
 7. Deixe em branco a opção **Manter estoque (minutos)** (isso evita problemas com contas canceladas antes do cliente pagar o boleto).
@@ -106,48 +79,21 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 ### O que eu preciso para utilizar este plugin? ###
 
 * Ter instalado o WooCommerce 2.0.x ou superior.
-* Com a conta é possível gerar um Token em [Boleto Simples - Minhas informações](https://app.boletosimples.com.br/myinfo);
-* E finalmente crie uma notificação em [Boleto Simples - Notificações](https://app.boletosimples.com.br/web_hooks/new);
-* Na notificação criada:;
-* Escolha o evento 'Pago';
-* Escolha a situação 'Ativo';
-* Crie um **Código de Segurança**;
+* Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
 * E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
 * Pronto, conta configurada.
 
 ### O que é o Boleto Simples? ###
 
-O Boleto Simples é um sistema que funciona na web, feito para que qualquer pessoa possa gerar boletos bancários e gerenciar suas cobranças. Com o Boleto Simples é possível cadastrar os dados da cobrança que ele gera o boleto bancário para ser enviado para o cliente pagar. Os bancos possuem seus próprios sistemas para isso, mas no Boleto Simples é possível emitir boletos para diversos bancos e gerenciar todas as cobranças em um só lugar. Além de possuir diversos recursos que outros sistemas não oferecem.
+O Boleto Simples é um sistema que funciona na web, feito para que qualquer pessoa possa gerar boletos bancários e gerenciar suas cobranças. Com o Boleto Simples é possível cadastrar os dados da sua conta bancária que ele gera o boleto bancário para ser enviado para o cliente pagar.
 
 ### Quais são os pré-requisitos para usar o Boleto Simples? ###
 
 Para usar o Boleto Simples é necessário:
 
-1. Ter uma conta corrente em banco;
-2. Possuir um contrato de cobrança (chamada de carteira de cobrança);
-3. Ter em mãos os dados da conta corrente e os dados da carteira de cobrança;
+1. Ter uma conta corrente ou poupança em banco;
+2. Enviar documentação pessoal(CPF, ENDEREÇO e ETC.);
 4. Possuir um computador com acesso à internet;
-
-### Quais os bancos e carteiras suportadas? ###
-
-* **Banco do Brasil** - 18-17, 18-027, 17-019, 18-019 (Convênio com 7 dígitos), 18-019 (Convênio com 6 dígitos), 18-019 (Convênio com 8 dígitos)
-* **Banespa** - 008
-* **Banrisul** - Cob. Direta
-* **Santander** - 102
-* **Sicredi** - A (Simples)
-* **Real** - 57
-* **Itaú** - 179, 175, 109, 174, 176, 178, 157
-* **Bradesco** - 06, 09, 25, 03
-* **HSBC** - CNR, CNR Fácil
-* **Caixa Econômica Federal** - SIGCB: 24 ou 02, SINCO, SR (80), SR (82), CR (90), SR5
-* **Nossa Caixa** - CIDENT
-* **BCN** - 1
-* **Sudameris** - Cobrança Simples
-* **FINASA** - 27
-* **Unibanco** - Cob Especial
-* **Safra** - 4
-* **Citibank** - 3 - Cobrança Comum, 4 - Cobrança de Seguro
-* **Bancoob/Sicoob** - 01, 02
 
 ### Mais dúvidas de como funciona o Boleto Simples? ###
 
@@ -188,7 +134,7 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 	 */
 	function custom_woocommerce_boletosimples_billet_data( $data, $order ) {
 		// aqui você pode trabalhar e alterar o array $data com o que desejar.
-		// Api do Boleto Simples: https://github.com/Boleto Simples/boletosimples-api
+		// Api do Boleto Simples: http://api.boletosimples.com.br
 
 		return $data;
 	}
@@ -253,14 +199,10 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 ## Screenshots ##
 
 ### 1. Plugin Settings. ###
-![1. Plugin Settings.](http://s.wordpress.org/extend/plugins/cobre-grátis-woocommerce/screenshot-1.png)
+![1. Plugin Settings.](http://s.wordpress.org/extend/plugins/boletosimples-woocommerce/screenshot-1.png)
 
 
 ## Changelog ##
-
-### 1.0.1 - 17/05/2014 ###
-
-* Corrigida a geração de boletos.
 
 ### 1.0.0 ###
 
@@ -268,9 +210,6 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 
 ## Upgrade Notice ##
 
-### 1.0.1 ###
-
-* Corrigida a geração de boletos.
 
 ## License ##
 
