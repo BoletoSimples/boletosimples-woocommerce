@@ -5,14 +5,14 @@
  * @package   WC_BoletoSimples
  * @author    Kivanio Barbosa <kivanio@boletosimples.com.br
  * @license   GPL-2.0+
- * @copyright 2013 Boleto Simples
+ * @copyright 2014 Boleto Simples
  *
  * @wordpress-plugin
  * Plugin Name:       Boleto Simples for WooCommerce
  * Plugin URI:        https://github.com/BoletoSimples/boletosimples-woocommerce
  * Description:       Start getting money by bank billet in your checking account using Boleto Simples
  * Version:           1.0.1
- * Author:            Boleto Simples, claudiosanches
+ * Author:            Boleto Simples
  * Author URI:        http://boletosimples.com.br/
  * Text Domain:       boletosimples-woocommerce
  * License:           GPL-2.0+

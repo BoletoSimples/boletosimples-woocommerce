@@ -74,11 +74,21 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 8. Salve novamente as configurações;
 9. Tudo pronto para receber pagamentos via boleto bancário usando o **Boleto Simples**.
 
+### Configuração do plugin para CPF/CNPJ ###
+
+1. Instale e ative o plugin https://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/
+2. Vá até `WooCommerce > Campos do Checkout`;
+3. Escolha 'CPF e CNPJ' em 'Exibir Tipo de Pessoa'
+4. Marque a opção 'Caso esteja marcado os campos de Pessoa Física e Pessoa Jurídica serão obrigatórios apenas no Brasil.'
+5. Deixe as opções de validação de e-mail, cpf, cnpj todas ativas(Ajuda a evitar fraudes)
+6. Salve as configurações.
+
 ## Frequently Asked Questions ##
 
 ### O que eu preciso para utilizar este plugin? ###
 
 * Ter instalado o WooCommerce 2.0.x ou superior.
+* Ter instalado o https://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/
 * Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
 * E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
 * Pronto, conta configurada.

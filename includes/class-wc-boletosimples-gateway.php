@@ -5,7 +5,7 @@
  * @package   WC_BoletoSimples
  * @author    Kivanio Barbosa <kivanio@boletosimples.com.br>
  * @license   GPL-2.0+
- * @copyright 2013 Boleto Simples
+ * @copyright 2014 Boleto Simples
  */
 
 /**
@@ -32,8 +32,8 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$this->method_description = __( 'Start getting money by bank billet in using Boleto Simples', $this->plugin_slug );
 
 		// API.
-		$this->api_url = 'https://boletosimples.com.br/api/v1/';
-		$this->sandbox_url = 'https://sandbox.boletosimples.com.br/api/v1/';
+    $this->api_url = 'https://boletosimples.com.br/api/v1/';
+    $this->sandbox_url = 'https://sandbox.boletosimples.com.br/api/v1/';
 
 		// Load the form fields.
 		$this->init_form_fields();
@@ -42,14 +42,16 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$this->init_settings();
 
 		// Define user set variables.
-		$this->title         = $this->get_option( 'title' );
-		$this->description   = $this->get_option( 'description' );
-		$this->token         = $this->get_option( 'token' );
-		$this->days_to_pay   = $this->get_option( 'days_to_pay', 5 );
-		$this->demonstrative = $this->get_option( 'demonstrative' );
-		$this->notification  = $this->get_option( 'notification' );
-		$this->debug         = $this->get_option( 'debug' );
-		$this->testmode      = $this->get_option( 'testmode' );
+		$this->title            = $this->get_option( 'title' );
+		$this->description      = $this->get_option( 'description' );
+		$this->token            = $this->get_option( 'token' );
+		$this->days_to_pay      = $this->get_option( 'days_to_pay', 5 );
+		$this->demonstrative    = $this->get_option( 'demonstrative' );
+		$this->notification     = $this->get_option( 'notification' );
+		$this->debug            = $this->get_option( 'debug' );
+		$this->testmode         = $this->get_option( 'testmode' );
+		$this->email            = $this->get_option( 'email' );
+    $this->notification_url = $this->get_option( 'notification_url' );
     
 		// Actions.
 		add_action( 'woocommerce_api_wc_boletosimples_gateway', array( $this, 'check_webhook_notification' ) );
@@ -176,6 +178,11 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 				'default'     => 'no',
         'description' => __( 'Boleto Simples sandbox can be used to test payments.', $this->plugin_slug ) . '<br />' . sprintf( __( 'Sign up for a developer account %s.', $this->plugin_slug ), '<a href="https://sandbox.boletosimples.com.br" target="_blank">' . __( 'here', $this->plugin_slug ) . '</a>' ),
 			),
+			'email' => array(
+				'title'       => __( 'E-mail', $this->plugin_slug ),
+				'type'        => 'text',
+				'description' => __( 'Please enter your Boleto Simples e-mail account.', $this->plugin_slug ),
+			),
 			'title' => array(
 				'title'       => __( 'Title', $this->plugin_slug ),
 				'type'        => 'text',
@@ -234,7 +241,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 				'type'        => 'checkbox',
 				'label'       => __( 'Enable logging', $this->plugin_slug ),
 				'default'     => 'no',
-				'description' => sprintf( __( 'Log Boleto Simples events, such as API requests, inside %s', $this->plugin_slug ), '<code>woocommerce/logs/' . $this->id . '-' . sanitize_file_name( wp_hash( $this->id ) ) . '.txt</code>' )
+				'description' => sprintf( __( 'Log Boleto Simples events, such as API requests, inside %s', $this->plugin_slug ), '<code>wc-logs/' . $this->id . '-' . sanitize_file_name( wp_hash( $this->id ) ) . '.txt</code>' )
 			)
 		);
 	}
@@ -249,22 +256,29 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	 * @return array           Payment data.
 	 */
 	protected function payment_data( $order ) {
+
 		$args = array(
 			// Customer data.
-			'name'                 => $order->billing_first_name . ' ' . $order->billing_last_name,
+			'customer_person_name' => $order->billing_first_name . ' ' . $order->billing_last_name,
 
 			// Order data.
 			'amount'               => number_format( $order->order_total, 2, ',', '' ),
-			'expire_at'            => date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) ),
-
+       
 			// Document data.
 			'description'          => $this->demonstrative,
-			'notification_url'     => $this->notification_url
+			'notification_url'     => $this->notification_url,
+      'customer_email'       => $order->billing_email
 		);
 
+    if ( 'yes' == $this->testmode ) {
+			$args['expire_at'] = date( 'd/m/Y', time() - ( 35 * 86400 ) );
+		} else {
+			$args['expire_at'] = date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) );
+		}
+    
 		// WooCommerce Extra Checkout Fields for Brazil person type fields.
 		if ( isset( $order->billing_persontype ) && ! empty( $order->billing_persontype ) ) {
-			if ( 2 == $order->billing_persontyp ) {
+			if ( 2 == $order->billing_persontype ) {
 				$args['customer_cnpj_cpf'] = $order->billing_cnpj;
 			} else {
 				$args['customer_cnpj_cpf'] = $order->billing_cpf;
@@ -296,7 +310,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
 		// Phone
 		if ( isset( $order->billing_phone ) && ! empty( $order->billing_phone ) ) {
-			$args['customer_phone_number'] = $order->billing_phone;
+			$args['customer_phone_number'] = preg_replace("/\D/", "", $order->billing_phone);
 		}
 
 		// Notification.
@@ -307,6 +321,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		// Sets a filter for custom arguments.
 		$args = apply_filters( 'woocommerce_boletosimples_billet_data', $args, $order );
 
+    $args = array('bank_billet' => $args );
 		return $args;
 	}
 
@@ -325,7 +340,8 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		} else {
   		$url  = $this->api_url . 'bank_billets.json';
 		}
-		$body = $this->payment_data( $order );
+    
+		$body = $this-> payment_data( $order );
 
 		if ( 'yes' == $this->debug ) {
 			$this->log->add( $this->id, 'Creating billet for order ' . $order->get_order_number() . ' with the following data: ' . print_r( $body, true ) );
@@ -339,7 +355,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 			'timeout'    => 60,
 			'headers'    => array(
 				'Content-Type' => 'application/json',
-        'User-Agent' => 'WooCommerce Boleto Simples '.$this->version
+        'User-Agent' => 'WooCommerce Boleto Simples '.$this->version . '('.$this->email.')'
 			)
 		);
 
@@ -362,7 +378,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
 			if ( isset( $data->id ) ) {
 				if ( 'yes' == $this->debug ) {
-					$this->log->add( $this->id, 'Billet created with success! The ID is: ' . $data->id );
+					$this->log->add( $this->id, 'Billet created with success! The ID is: ' . $data->id . ' with the following data: ' . print_r( $data, true ) );
 				}
 
 				// Save billet data in order meta.
