@@ -267,7 +267,8 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 			// Document data.
 			'description'          => $this->demonstrative,
 			'notification_url'     => $this->notification_url,
-      'customer_email'       => $order->billing_email
+      'customer_email'       => $order->billing_email,      
+			'meta'                 => 'order-' . $order->id
 		);
 
     if ( 'yes' == $this->testmode ) {
@@ -383,7 +384,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
 				// Save billet data in order meta.
 				add_post_meta( $order->id, 'boletosimples_id', $data->id );
-				add_post_meta( $order->id, 'boletosimples_url', $data->shorten_url );
+				add_post_meta( $order->id, 'boletosimples_url', $data->shortener_url );
 
 				return true;
 			}
@@ -457,8 +458,11 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$url = get_post_meta( $order_id, 'boletosimples_url', true );
 
 		$html = '<div class="woocommerce-message">';
-		$html .= sprintf( '<a class="button" href="%s" target="_blank">%s</a>', $url, __( 'Billet print', $this->plugin_slug ) );
-
+    
+		if ( isset( $url ) && ! empty( $url ) ) {
+      $html .= sprintf( '<a class="button" href="%s" target="_blank">%s</a>', $url, __( 'Billet print', $this->plugin_slug ) );
+    }
+  
 		$message = sprintf( __( '%sAttention!%s You will not get the billet by Correios.', $this->plugin_slug ), '<strong>', '</strong>' ) . '<br />';
 		$message .= __( 'Please click the following button and pay the billet in your Internet Banking.', $this->plugin_slug ) . '<br />';
 		$message .= __( 'If you prefer, print and pay at any bank branch or home lottery.', $this->plugin_slug ) . '<br />';
@@ -493,11 +497,15 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$message .= __( 'Please click the following link and pay the billet in your Internet Banking.', $this->plugin_slug ) . '<br />';
 		$message .= __( 'If you prefer, print and pay at any bank branch or home lottery.', $this->plugin_slug ) . '<br />';
 
+    $url = get_post_meta( $order->id, 'boletosimples_url', true );
+      
 		$html .= apply_filters( 'woocommerce_boletosimples_email_instructions', $message, $order );
 
-		$html .= '<br />' . sprintf( '<a class="button" href="%s" target="_blank">%s</a>', get_post_meta( $order->id, 'boletosimples_url', true ), __( 'Billet print &rarr;', $this->plugin_slug ) ) . '<br />';
-
-		$html .= '</p>';
+		if ( isset( $url ) && ! empty( $url ) ) {
+      $html .= '<br />' . sprintf( '<a class="button" href="%s" target="_blank">%s</a>', $url, __( 'Billet print &rarr;', $this->plugin_slug ) ) . '<br />';
+    }
+		
+    $html .= '</p>';
 
 		echo $html;
 	}
@@ -536,10 +544,14 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		if ( 'yes' == $this->debug ) {
 			$this->log->add( $this->id, 'Updating to processing the status of the order ' . $order->get_order_number() );
 		}
+        
+		update_post_meta( $order->id, 'boletosimples_url', $data['shortener_url'] );
 
 		// Complete the order.
-		$order->add_order_note( __( 'Boleto Simples: Payment approved.', $this->plugin_slug ) );
-		$order->payment_complete();
+    if ( 'paid' == $data['status'] ) {
+		  $order->add_order_note( __( 'Boleto Simples: Payment approved.', $this->plugin_slug ) );
+		  $order->payment_complete();
+    }
 	}
 
 	/**
