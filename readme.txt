@@ -45,7 +45,7 @@ Você pode esclarecer suas dúvidas usando:
 * Criando um tópico no [fórum do GitHub](https://github.com/BoletoSimples/boletosimples-woocommerce/issues).
 * Criando um tópico no [fórum de ajuda do WordPress](http://wordpress.org/support/plugin/boletosimples-woocommerce) (apenas em inglês).
 
-### Coloborar ###
+### Colaborar ###
 
 Você pode contribuir com código-fonte em nossa página no [GitHub](https://github.com/BoletoSimples/boletosimples-woocommerce).
 
