@@ -5,7 +5,7 @@
  * @package   WC_BoletoSimples
  * @author    Kivanio Barbosa <kivanio@boletosimples.com.br>
  * @license   GPL-2.0+
- * @copyright 2014 Boleto Simples
+ * @copyright 2016 Boleto Simples
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  * @package WC_BoletoSimples_Gateway
  * @author  Kivanio Barbosa <kivanio@boletosimples.com.br>
- * @since   1.0.0
+ * @since   2.0.0
  */
 class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
@@ -25,7 +25,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	public function __construct() {
 		$this->id                 = 'boletosimples';
 		$this->plugin_slug        = 'boletosimples-woocommerce';
-    $this->version            = '1.0.0';
+    $this->version            = '2.0.0';
 		$this->icon               = apply_filters( 'woocommerce_boletosimples_icon', '' );
 		$this->has_fields         = false;
 		$this->method_title       = __( 'Boleto Simples', $this->plugin_slug );
@@ -46,8 +46,6 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$this->description      = $this->get_option( 'description' );
 		$this->token            = $this->get_option( 'token' );
 		$this->days_to_pay      = $this->get_option( 'days_to_pay', 5 );
-		$this->demonstrative    = $this->get_option( 'demonstrative' );
-		$this->notification     = $this->get_option( 'notification' );
 		$this->debug            = $this->get_option( 'debug' );
 		$this->testmode         = $this->get_option( 'testmode' );
 		$this->email            = $this->get_option( 'email' );
@@ -199,7 +197,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 			'token' => array(
 				'title'       => __( 'Boleto Simples Token', $this->plugin_slug ),
 				'type'        => 'text',
-				'description' => __( 'Please enter your Boleto Simples token. This is needed to process the payment.', $this->plugin_slug ) . '<br />' . sprintf( __( 'You can generate a token by clicking %s.', $this->plugin_slug ), '<a href="https://boletosimples.com.br/conta/api" target="_blank">' . __( 'here', $this->plugin_slug ) . '</a>' ),
+				'description' => __( 'Please enter your Boleto Simples token. This is needed to process the payment.', $this->plugin_slug ) . '<br />' . sprintf( __( 'You can generate a token by clicking %s.', $this->plugin_slug ), '<a href="https://boletosimples.com.br/conta/api/tokens" target="_blank">' . __( 'here', $this->plugin_slug ) . '</a>' ),
 				'default'     => ''
 			),
 			'options' => array(
@@ -214,21 +212,10 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 				'default'     => '5'
 			),
-			'demonstrative' => array(
-				'title'       => __( 'Demonstrative', $this->plugin_slug ),
-				'type'        => 'textarea',
-				'default'     => ''
-			),
 			'notification_url' => array(
 				'title'       => __( 'Notification URL', $this->plugin_slug ),
 				'type'        => 'text',
 				'description' => __( 'If you want to be notified of bank billet changes such Paid, Cancel and etc. You need configure the url will receive the notification.', $this->plugin_slug ),
-				'default'     => ''
-			),
-			'notification' => array(
-				'title'       => __( 'Bank billet by e-mail', $this->plugin_slug ),
-				'type'        => 'checkbox',
-				'description' => __( 'If you want to send the bank billet by e-mail to your customer.', $this->plugin_slug ),
 				'default'     => ''
 			),
 			'testing' => array(
@@ -257,6 +244,15 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	 */
 	protected function payment_data( $order ) {
 
+    $product_list = '';
+    $order_item = $order->get_items();
+
+    foreach( $order_item as $product ) {
+      $prodct_name[] = $product['name'];
+    }
+
+    $product_list = implode( ',\n', $prodct_name );
+
 		$args = array(
 			// Customer data.
 			'customer_person_name' => $order->billing_first_name . ' ' . $order->billing_last_name,
@@ -265,17 +261,12 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 			'amount'               => number_format( $order->order_total, 2, ',', '' ),
        
 			// Document data.
-			'description'          => $this->demonstrative,
+			'description'          => $product_list,
 			'notification_url'     => $this->notification_url,
-      'customer_email'       => $order->billing_email,      
-			'meta'                 => 'order-' . $order->id
+      'customer_email'       => $order->billing_email,
+			'meta'                 => 'order-' . $order->id,
+      'expire_at'            => date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) )
 		);
-
-    if ( 'yes' == $this->testmode ) {
-			$args['expire_at'] = date( 'd/m/Y', time() - ( 35 * 86400 ) );
-		} else {
-			$args['expire_at'] = date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) );
-		}
     
 		// WooCommerce Extra Checkout Fields for Brazil person type fields.
 		if ( isset( $order->billing_persontype ) && ! empty( $order->billing_persontype ) ) {
@@ -312,11 +303,6 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		// Phone
 		if ( isset( $order->billing_phone ) && ! empty( $order->billing_phone ) ) {
 			$args['customer_phone_number'] = preg_replace("/\D/", "", $order->billing_phone);
-		}
-
-		// Notification.
-		if ( 'yes' == $this->notification ) {
-			$args['send_email_on_creation'] = true;
 		}
 
 		// Sets a filter for custom arguments.
@@ -384,7 +370,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
 				// Save billet data in order meta.
 				add_post_meta( $order->id, 'boletosimples_id', $data->id );
-				add_post_meta( $order->id, 'boletosimples_url', $data->shortener_url );
+				add_post_meta( $order->id, 'boletosimples_url', $data->url );
 
 				return true;
 			}
@@ -545,7 +531,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 			$this->log->add( $this->id, 'Updating to processing the status of the order ' . $order->get_order_number() );
 		}
         
-		update_post_meta( $order->id, 'boletosimples_url', $data['shortener_url'] );
+		update_post_meta( $order->id, 'boletosimples_url', $data['url'] );
 
 		// Complete the order.
     if ( 'paid' == $data['status'] ) {
