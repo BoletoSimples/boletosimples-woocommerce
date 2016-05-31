@@ -192,8 +192,7 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 ## Screenshots ##
 
 ### 1. Plugin Settings. ###
-![1. Plugin Settings.](http://s.wordpress.org/extend/plugins/boletosimples-woocommerce/screenshot-1.png)
-
+![1. Plugin Settings.](https://raw.githubusercontent.com/BoletoSimples/boletosimples-woocommerce/master/screenshot-1.png)
 
 ## Changelog ##
 
