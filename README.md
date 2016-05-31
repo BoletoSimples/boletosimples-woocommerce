@@ -35,7 +35,7 @@ Instalar é bem simples, basta seguir o nosso [guia de instalação](http://word
 
 ### Compatibilidade ###
 
-Compatível com as versões 2.0.x e 2.1.x do WooCommerce.
+Compatível com as versões 2.5.x do WooCommerce.
 
 ### Dúvidas? ###
 
@@ -59,7 +59,7 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 ### Configuração do Boleto Simples ###
 
 1. Crie uma conta no [Boleto Simples](http://boletosimples.com.br/);
-2. Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
+2. Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api/tokens);
 3. E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
 4. Pronto, conta configurada.
 
@@ -87,9 +87,9 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 
 ### O que eu preciso para utilizar este plugin? ###
 
-* Ter instalado o WooCommerce 2.0.x ou superior.
+* Ter instalado o WooCommerce 2.5.x ou superior.
 * Ter instalado o https://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/
-* Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
+* Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api/tokens);
 * E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
 * Pronto, conta configurada.
 
@@ -101,8 +101,9 @@ O Boleto Simples é um sistema que funciona na web, feito para que qualquer pess
 
 Para usar o Boleto Simples é necessário:
 
-1. Ter uma conta corrente ou poupança em banco;
-2. Enviar documentação pessoal(CPF, ENDEREÇO e ETC.);
+1. Ter uma conta corrente no banco;
+2. Ter uma carteira de cobrança contratada no banco;
+3. Enviar documentação pessoal(CPF, ENDEREÇO e ETC.);
 4. Possuir um computador com acesso à internet;
 
 ### Mais dúvidas de como funciona o Boleto Simples? ###
@@ -170,24 +171,6 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 	add_filter( 'woocommerce_boletosimples_thankyou_page_instructions', 'custom_woocommerce_boletosimples_thankyou_page_instructions', 10, 2 );
 
 
-### Alterar as instruções do boleto no e-mail: ###
-
-
-	/**
-	 * Customizar as instruções sobre o boleto no e-mail.
-	 *
-	 * @param  string   $message Mensagem padrão do plugin.
-	 * @param  WC_Order $order   Objeto que contém todas as informações do pedido.
-	 *
-	 * @return string            Novas instruções.
-	 */
-	function custom_woocommerce_boletosimples_email_instructions( $message, $order ) {
-		return 'Novas instruções';
-	}
-
-	add_filter( 'woocommerce_boletosimples_email_instructions', 'custom_woocommerce_boletosimples_email_instructions', 10, 2 );
-
-
 ### Alterar as instruções do boleto para pedidos que estão aguardando pagamento: ###
 
 
@@ -214,7 +197,7 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 
 ## Changelog ##
 
-### 1.0.0 ###
+### 2.0.0 ###
 
 * Versão inicial.
 
