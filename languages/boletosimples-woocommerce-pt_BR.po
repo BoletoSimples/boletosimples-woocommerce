@@ -1,334 +1,313 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Boleto Simples for WooCommerce v1.0.0\n"
+"Project-Id-Version: Boleto Simples for WooCommerce v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-02-14 17:12:49+0000\n"
+"POT-Creation-Date: 2016-06-02 15:02-0400\n"
+"PO-Revision-Date: 2016-06-02 15:19-0400\n"
 "Last-Translator: Kivanio Barbosa <kivanio@boletosimples.com.br>\n"
 "Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: CSL v1.x\n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-Country: BRAZIL\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-Bookmarks: \n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
 
-#. translators: plugin header field 'Name'
-#: boletosimples-woocommerce.php:0
-#@ boletosimples-woocommerce
-msgid "Boleto Simples for WooCommerce"
-msgstr "Boleto Simples para WooCommerce"
-
-#. translators: plugin header field 'PluginURI'
-#: boletosimples-woocommerce.php:0
-#@ boletosimples-woocommerce
-msgid "https://github.com/Boleto Simples/boletosimples-woocommerce"
-msgstr "https://github.com/Boleto Simples/boletosimples-woocommerce"
-
-#. translators: plugin header field 'Description'
-#: boletosimples-woocommerce.php:0
-#@ boletosimples-woocommerce
-msgid "Start getting money by bank billet in your checking account using Boleto Simples"
-msgstr "Comece a receber dinheiro por boleto bancário e recebendo em usa conta usando o Boleto Simples"
-
-#. translators: plugin header field 'Author'
-#: boletosimples-woocommerce.php:0
-#@ boletosimples-woocommerce
-msgid "Boleto Simples, claudiosanches"
-msgstr "Boleto Simples, claudiosanches"
-
-#. translators: plugin header field 'AuthorURI'
-#: boletosimples-woocommerce.php:0
-#@ boletosimples-woocommerce
-msgid "http://boletosimples.com.br/"
-msgstr "http://boletosimples.com.br/"
-
-#. translators: plugin header field 'Version'
-#: boletosimples-woocommerce.php:0
-#@ boletosimples-woocommerce
-msgid "1.0.0"
-msgstr "1.0.0"
-
+# @ boletosimples-woocommerce
 #: boletosimples-woocommerce.php:32
 #, php-format
-#@ boletosimples-woocommerce
-msgid "Boleto Simples for WooCommerce depends on the last version of %s to work!"
-msgstr "Boleto Simples para WooCommerce depende da última versão do %s para funcionar!"
+msgid ""
+"Boleto Simples for WooCommerce depends on the last version of %s to work!"
+msgstr ""
+"Boleto Simples para WooCommerce depende da última versão do %s para "
+"funcionar!"
 
+# @ boletosimples-woocommerce
 #: boletosimples-woocommerce.php:32
-#@ boletosimples-woocommerce
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: boletosimples-woocommerce.php:110
-#, php-format
-#@ boletosimples-woocommerce
-msgid "%sAttention!%s Not registered the billet payment for this order yet."
-msgstr "%sAtenção!%s Não foi registrado o pagamento do boleto deste pedido ainda."
-
-#: boletosimples-woocommerce.php:111
-#: includes/class-wc-boletosimples-gateway.php:463
-#@ boletosimples-woocommerce
-msgid "Please click the following button and pay the billet in your Internet Banking."
-msgstr "Por favor, clique no botão ao lado para pagar o boleto pelo seu Internet Banking."
-
-#: boletosimples-woocommerce.php:112
-#: includes/class-wc-boletosimples-gateway.php:464
-#: includes/class-wc-boletosimples-gateway.php:494
-#@ boletosimples-woocommerce
-msgid "If you prefer, print and pay at any bank branch or home lottery."
-msgstr "Se você preferir, é possível imprimir e pagar em qualquer agencia bancária ou casa lotérica."
-
-#: boletosimples-woocommerce.php:113
-#@ boletosimples-woocommerce
-msgid "Ignore this message if the payment has already been made​​."
-msgstr "Ignore esta mensagem caso o pagamento já foi feito."
-
-#: includes/class-wc-boletosimples-gateway.php:30
-#: includes/class-wc-boletosimples-gateway.php:572
-#: includes/class-wc-boletosimples-gateway.php:583
-#: includes/class-wc-boletosimples-gateway.php:594
-#@ boletosimples-woocommerce
-msgid "Boleto Simples"
-msgstr "Boleto Simples"
-
-#: includes/class-wc-boletosimples-gateway.php:173
-#@ boletosimples-woocommerce
-msgid "Enable/Disable"
-msgstr "Habilitar/Desabilitar"
-
-#: includes/class-wc-boletosimples-gateway.php:175
-#@ boletosimples-woocommerce
-msgid "Enable Boleto Simples"
-msgstr "Habilitar Boleto Simples"
-
-#: includes/class-wc-boletosimples-gateway.php:179
-#@ boletosimples-woocommerce
-msgid "Title"
-msgstr "Título"
-
-#: includes/class-wc-boletosimples-gateway.php:181
-#@ boletosimples-woocommerce
-msgid "This controls the title which the user sees during checkout."
-msgstr "Isto controla o título que o cliente irá ver durante a finalização do pedido."
-
-#: includes/class-wc-boletosimples-gateway.php:183
-#@ boletosimples-woocommerce
-msgid "Bank billet"
-msgstr "Boleto bancário"
-
-#: includes/class-wc-boletosimples-gateway.php:186
-#@ boletosimples-woocommerce
-msgid "Description"
-msgstr "Descrição"
-
-#: includes/class-wc-boletosimples-gateway.php:188
-#@ boletosimples-woocommerce
-msgid "This controls the description which the user sees during checkout."
-msgstr "Isto controla a descrição que o cliente irá ver durante a finalização do pedido."
-
-#: includes/class-wc-boletosimples-gateway.php:189
-#@ boletosimples-woocommerce
-msgid "Pay using bank billet"
-msgstr "Pagar usando boleto bancário"
-
-#: includes/class-wc-boletosimples-gateway.php:192
-#@ boletosimples-woocommerce
-msgid "Boleto Simples Token"
-msgstr "Token do Boleto Simples"
-
-#: includes/class-wc-boletosimples-gateway.php:194
-#@ boletosimples-woocommerce
-msgid "Please enter your Boleto Simples token. This is needed to process the payment."
-msgstr "Por favor, digite o seu token do Boleto Simples. Isto é necessário para processar o pagamento."
-
-#: includes/class-wc-boletosimples-gateway.php:204
-#@ boletosimples-woocommerce
-msgid "Billet options"
-msgstr "Opções do boleto"
-
-#: includes/class-wc-boletosimples-gateway.php:209
-#@ boletosimples-woocommerce
-msgid "Days to pay"
-msgstr "Dias para pagar"
-
-#: includes/class-wc-boletosimples-gateway.php:216
-#@ boletosimples-woocommerce
-msgid "Demonstrative"
-msgstr "Demonstrativo"
-
-#: includes/class-wc-boletosimples-gateway.php:221
-#@ boletosimples-woocommerce
-msgid "Cashier instructions"
-msgstr "Informações para o caixa"
-
-#: includes/class-wc-boletosimples-gateway.php:226
-#@ boletosimples-woocommerce
-msgid "Fines percentage"
-msgstr "Percentual de multa"
-
-#: includes/class-wc-boletosimples-gateway.php:228
-#: includes/class-wc-boletosimples-gateway.php:235
-#@ boletosimples-woocommerce
-msgid "Enter with an integer."
-msgstr "Digite um número inteiro."
-
-#: includes/class-wc-boletosimples-gateway.php:240
-#@ boletosimples-woocommerce
-msgid "Non-payment notification"
-msgstr "Notificação de pagamento pendente"
-
-#: includes/class-wc-boletosimples-gateway.php:242
-#@ boletosimples-woocommerce
-msgid "If the ticket has not been paid after 2 days of winning you will receive a notification in your Boleto Simples email."
-msgstr "Se o boleto não for pagamento depois de 2 dias do vencimento você receberá uma notificação em seu e-mail cadastrado Boleto Simples."
-
-#: includes/class-wc-boletosimples-gateway.php:246
-#@ boletosimples-woocommerce
-msgid "Gateway Testing"
-msgstr "Testes do portal de pagamento"
-
-#: includes/class-wc-boletosimples-gateway.php:251
-#@ boletosimples-woocommerce
-msgid "Debug Log"
-msgstr "Log de depuração"
-
-#: includes/class-wc-boletosimples-gateway.php:253
-#@ boletosimples-woocommerce
-msgid "Enable logging"
-msgstr "Ativar log"
-
-#: includes/class-wc-boletosimples-gateway.php:255
-#, php-format
-#@ boletosimples-woocommerce
-msgid "Log Boleto Simples events, such as API requests, inside %s"
-msgstr "Log com eventos do Boleto Simples, como requisições a API, dentro de %s"
-
-#: includes/class-wc-boletosimples-gateway.php:419
-#@ boletosimples-woocommerce
-msgid "Awaiting billet payment."
-msgstr "Aguardando pagamento do boleto."
-
-#: includes/class-wc-boletosimples-gateway.php:441
-#@ boletosimples-woocommerce
-msgid "An error has occurred while processing your payment, please try again. Or contact us for assistance."
-msgstr "Um erro ocorreu ao processar o seu pagamento, por favor, tente novamente, ou entre em contato para solicitar ajudar."
-
-#: includes/class-wc-boletosimples-gateway.php:462
-#: includes/class-wc-boletosimples-gateway.php:492
-#, php-format
-#@ boletosimples-woocommerce
-msgid "%sAttention!%s You will not get the billet by Correios."
-msgstr "%sAtenção!%s O seu boleto não será entregue pelos Correios."
-
-#: includes/class-wc-boletosimples-gateway.php:488
-#@ boletosimples-woocommerce
-msgid "Payment"
-msgstr "Pagamento"
-
-#: includes/class-wc-boletosimples-gateway.php:493
-#@ boletosimples-woocommerce
-msgid "Please click the following link and pay the billet in your Internet Banking."
-msgstr "Por favor, clique no link a baixo para pagar o boleto pelo seu Internet Banking."
-
-#: includes/class-wc-boletosimples-gateway.php:572
-#: includes/class-wc-boletosimples-gateway.php:583
-#@ boletosimples-woocommerce
-msgid "Click here to configure!"
-msgstr "Clique aqui para configurar!"
-
-#: includes/class-wc-boletosimples-gateway.php:572
-#, php-format
-#@ boletosimples-woocommerce
-msgid "You should inform your token. %s"
-msgstr "Você precisa informar o seu token. %s"
-
-#: includes/class-wc-boletosimples-gateway.php:594
-#, php-format
-#@ boletosimples-woocommerce
-msgid "Currency <code>%s</code> is not supported. Works only with Brazilian Real."
-msgstr "A moeda <code>%s</code> não é suportada. Funciona apenas com real (BRL)."
-
-#: includes/class-wc-boletosimples-gateway.php:194
-#, php-format
-#@ boletosimples-woocommerce
-msgid "You can generate a token by clicking %s."
-msgstr "Você pode gerar um token clicando %s."
-
-#: includes/class-wc-boletosimples-gateway.php:194
-#: includes/class-wc-boletosimples-gateway.php:200
-#@ boletosimples-woocommerce
-msgid "here"
-msgstr "aqui"
-
-#: includes/class-wc-boletosimples-gateway.php:211
-#@ boletosimples-woocommerce
-msgid "Enter with the number of days the customer will have to pay the billet."
-msgstr "Digite o número de dias que o cliente terá para pagar o boleto."
-
-#: includes/class-wc-boletosimples-gateway.php:233
-#@ boletosimples-woocommerce
-msgid "Percentage of interest per day"
-msgstr "Percentual de juros ao dia"
-
+# @ boletosimples-woocommerce
 #: boletosimples-woocommerce.php:108
-#: includes/class-wc-boletosimples-gateway.php:460
-#@ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:457
 msgid "Billet print"
 msgstr "Imprimir boleto"
 
-#: includes/class-wc-boletosimples-gateway.php:498
-#@ boletosimples-woocommerce
+# @ boletosimples-woocommerce
+#: boletosimples-woocommerce.php:110
+#, php-format
+msgid "%sAttention!%s Not registered the billet payment for this order yet."
+msgstr ""
+"%sAtenção!%s Não foi registrado o pagamento do boleto deste pedido ainda."
+
+# @ boletosimples-woocommerce
+#: boletosimples-woocommerce.php:111
+#: includes/class-wc-boletosimples-gateway.php:461
+msgid ""
+"Please click the following button and pay the billet in your Internet "
+"Banking."
+msgstr ""
+"Por favor, clique no botão ao lado para pagar o boleto pelo seu Internet "
+"Banking."
+
+# @ boletosimples-woocommerce
+#: boletosimples-woocommerce.php:112
+#: includes/class-wc-boletosimples-gateway.php:462
+#: includes/class-wc-boletosimples-gateway.php:492
+msgid "If you prefer, print and pay at any bank branch or home lottery."
+msgstr ""
+"Se você preferir, é possível imprimir e pagar em qualquer agencia bancária "
+"ou casa lotérica."
+
+# @ boletosimples-woocommerce
+#: boletosimples-woocommerce.php:113
+msgid "Ignore this message if the payment has already been made​​."
+msgstr "Ignore esta mensagem caso o pagamento já foi feito."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:31
+#: includes/class-wc-boletosimples-gateway.php:574
+#: includes/class-wc-boletosimples-gateway.php:585
+#: includes/class-wc-boletosimples-gateway.php:596
+msgid "Boleto Simples"
+msgstr "Boleto Simples"
+
+#: includes/class-wc-boletosimples-gateway.php:32
+msgid "Start getting money by bank billet in using Boleto Simples"
+msgstr "Comece a receber por boletos usando o Boleto Simples."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:168
+msgid "Enable/Disable"
+msgstr "Habilitar/Desabilitar"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:170
+msgid "Enable Boleto Simples"
+msgstr "Habilitar Boleto Simples"
+
+#: includes/class-wc-boletosimples-gateway.php:174
+msgid "Boleto Simples sandbox"
+msgstr "Boleto Simples Sandbox"
+
+#: includes/class-wc-boletosimples-gateway.php:176
+msgid "Enable Boleto Simples sandbox"
+msgstr "Habilitar Modo Sandbox (Testes)"
+
+#: includes/class-wc-boletosimples-gateway.php:178
+msgid "Boleto Simples sandbox can be used to test payments."
+msgstr "Sandbox do boleto Simples pode ser usado para testar os pagamentos."
+
+#: includes/class-wc-boletosimples-gateway.php:178
+#, php-format
+msgid "Sign up for a developer account %s."
+msgstr "Cadastre-se para uma conta de desenvolvedor %s."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:178
+#: includes/class-wc-boletosimples-gateway.php:201
+#: includes/class-wc-boletosimples-gateway.php:219
+msgid "here"
+msgstr "aqui"
+
+#: includes/class-wc-boletosimples-gateway.php:181
+msgid "E-mail"
+msgstr "E-mail"
+
+#: includes/class-wc-boletosimples-gateway.php:183
+msgid "Please enter your Boleto Simples e-mail account."
+msgstr "Por favor, informe o e-mail usado na sua conta do Boleto Simples."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:186
+msgid "Title"
+msgstr "Título"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:188
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+"Isto controla o título que o cliente irá ver durante a finalização do pedido."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:190
+msgid "Bank billet"
+msgstr "Boleto bancário"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:193
+msgid "Description"
+msgstr "Descrição"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:195
+msgid "This controls the description which the user sees during checkout."
+msgstr ""
+"Isto controla a descrição que o cliente irá ver durante a finalização do "
+"pedido."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:196
+msgid "Pay using bank billet"
+msgstr "Pagar usando boleto bancário"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:199
+msgid "Boleto Simples Token"
+msgstr "Token do Boleto Simples"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:201
+msgid ""
+"Please enter your Boleto Simples token. This is needed to process the "
+"payment."
+msgstr ""
+"Por favor, digite o seu token do Boleto Simples. Isto é necessário para "
+"processar o pagamento."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:201
+#, php-format
+msgid "You can generate a token by clicking %s."
+msgstr "Você pode gerar um token clicando %s."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:205
+msgid "Billet options"
+msgstr "Opções do boleto"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:210
+msgid "Days to pay"
+msgstr "Dias para pagar"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:212
+msgid "Enter with the number of days the customer will have to pay the billet."
+msgstr "Digite o número de dias que o cliente terá para pagar o boleto."
+
+#: includes/class-wc-boletosimples-gateway.php:217
+msgid "Contract ID"
+msgstr "ID da Carteira de Cobrança"
+
+#: includes/class-wc-boletosimples-gateway.php:219
+msgid "Please enter your Contract ID. This is needed to create the billet."
+msgstr ""
+"Por favor informe o ID da Carteira de Cobrança. É necessário para gerar o "
+"boleto."
+
+#: includes/class-wc-boletosimples-gateway.php:219
+#, php-format
+msgid "You can find out the ID by clicking %s."
+msgstr "Você pode encontrar o ID clicando %s."
+
+#: includes/class-wc-boletosimples-gateway.php:223
+msgid "Notification URL"
+msgstr "URL de Notificação"
+
+#: includes/class-wc-boletosimples-gateway.php:225
+msgid ""
+"If you want to be notified of bank billet changes such Paid, Cancel and etc. "
+"You need configure the url will receive the notification."
+msgstr ""
+"Se você quer ser notificado sobre as mudanças na situação do boleto como: "
+"Pago, Cancelado e etc. Você precisa configurar a URL que irá receber a "
+"notificação."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:229
+msgid "Gateway Testing"
+msgstr "Testes do portal de pagamento"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:234
+msgid "Debug Log"
+msgstr "Log de depuração"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:236
+msgid "Enable logging"
+msgstr "Ativar log"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:238
+#, php-format
+msgid "Log Boleto Simples events, such as API requests, inside %s"
+msgstr ""
+"Log com eventos do Boleto Simples, como requisições a API, dentro de %s"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:412
+msgid "Awaiting billet payment."
+msgstr "Aguardando pagamento do boleto."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:434
+msgid ""
+"An error has occurred while processing your payment, please try again. Or "
+"contact us for assistance."
+msgstr ""
+"Um erro ocorreu ao processar o seu pagamento, por favor, tente novamente, ou "
+"entre em contato para solicitar ajudar."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:460
+#: includes/class-wc-boletosimples-gateway.php:490
+#, php-format
+msgid "%sAttention!%s You will not get the billet by Correios."
+msgstr "%sAtenção!%s O seu boleto não será entregue pelos Correios."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:486
+msgid "Payment"
+msgstr "Pagamento"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:491
+msgid ""
+"Please click the following link and pay the billet in your Internet Banking."
+msgstr ""
+"Por favor, clique no link a baixo para pagar o boleto pelo seu Internet "
+"Banking."
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:499
 msgid "Billet print &rarr;"
 msgstr "Imprimir boleto &rarr;"
 
-#: includes/class-wc-boletosimples-gateway.php:31
-#@ boletosimples-woocommerce
-msgid "Start getting money by bank billet in your checking account using Boleto Simples"
-msgstr "Comece a ganhar dinheiro por boleto bancário e recebendo em sua conta usando o Boleto Simples."
-
-#: includes/class-wc-boletosimples-gateway.php:198
-#@ boletosimples-woocommerce
-msgid "Notification security code"
-msgstr " Código de segurança da notificação"
-
-#: includes/class-wc-boletosimples-gateway.php:200
-#@ boletosimples-woocommerce
-msgid "Please enter your notification security code. This is needed to receive notifications when the billet is paid."
-msgstr "Por favor, digite o seu código de segurança da notificação. Isto é necessário para receber notificações sobre boletos pagos."
-
-#: includes/class-wc-boletosimples-gateway.php:200
-#, php-format
-#@ boletosimples-woocommerce
-msgid "You can configure a notification by clicking %s."
-msgstr "Você pode configurar uma notificação clicando %s."
-
-#: includes/class-wc-boletosimples-gateway.php:200
-#, php-format
-#@ boletosimples-woocommerce
-msgid "Be sure to set the %s url for your notification."
-msgstr "Tenha certeza que configurou este link %s em sua notificação."
-
-#: includes/class-wc-boletosimples-gateway.php:519
-#@ boletosimples-woocommerce
-msgid "Boleto Simples request failure"
-msgstr "Falha na requisição do Boleto Simples"
-
-#: includes/class-wc-boletosimples-gateway.php:545
-#@ boletosimples-woocommerce
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:546
 msgid "Boleto Simples: Payment approved."
 msgstr "Boleto Simples: Pagamento aprovado."
 
-#: includes/class-wc-boletosimples-gateway.php:583
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:574
 #, php-format
-#@ boletosimples-woocommerce
+msgid "You should inform your token. %s"
+msgstr "Você precisa informar o seu token. %s"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:574
+#: includes/class-wc-boletosimples-gateway.php:585
+msgid "Click here to configure!"
+msgstr "Clique aqui para configurar!"
+
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:585
+#, php-format
 msgid "You should inform your notification security code. %s"
 msgstr "Você precisa informar o seu código de segurança da notificação. %s"
 
+# @ boletosimples-woocommerce
+#: includes/class-wc-boletosimples-gateway.php:596
+#, php-format
+msgid ""
+"Currency <code>%s</code> is not supported. Works only with Brazilian Real."
+msgstr ""
+"A moeda <code>%s</code> não é suportada. Funciona apenas com real (BRL)."
