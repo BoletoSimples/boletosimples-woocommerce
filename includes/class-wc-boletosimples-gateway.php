@@ -50,6 +50,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$this->testmode         = $this->get_option( 'testmode' );
 		$this->email            = $this->get_option( 'email' );
     $this->notification_url = $this->get_option( 'notification_url' );
+    $this->contract_id      = $this->get_option( 'contract_id' );
     
 		// Actions.
 		add_action( 'woocommerce_api_wc_boletosimples_gateway', array( $this, 'check_webhook_notification' ) );
@@ -212,6 +213,12 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 				'default'     => '5'
 			),
+			'contract_id' => array(
+				'title'       => __( 'Contract ID', $this->plugin_slug ),
+				'type'        => 'text',
+				'description' => __( 'Please enter your Contract ID. This is needed to create the billet.', $this->plugin_slug ) . '<br />' . sprintf( __( 'You can find out the ID by clicking %s.', $this->plugin_slug ), '<a href="https://boletosimples.com.br/carteiras" target="_blank">' . __( 'here', $this->plugin_slug ) . '</a>' ),
+				'default'     => ''
+			),
 			'notification_url' => array(
 				'title'       => __( 'Notification URL', $this->plugin_slug ),
 				'type'        => 'text',
@@ -255,17 +262,18 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
 		$args = array(
 			// Customer data.
-			'customer_person_name' => $order->billing_first_name . ' ' . $order->billing_last_name,
+			'customer_person_name'   => $order->billing_first_name . ' ' . $order->billing_last_name,
 
 			// Order data.
-			'amount'               => number_format( $order->order_total, 2, ',', '' ),
+			'amount'                 => number_format( $order->order_total, 2, ',', '' ),
        
 			// Document data.
-			'description'          => $product_list,
-			'notification_url'     => $this->notification_url,
-      'customer_email'       => $order->billing_email,
-			'meta'                 => 'order-' . $order->id,
-      'expire_at'            => date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) )
+			'description'            => $product_list,
+			'notification_url'       => $this->notification_url,
+      'customer_email'         => $order->billing_email,
+			'meta'                   => 'order-' . $order->id,
+      'expire_at'              => date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) ),
+      'bank_billet_account_id' => $this->contract_id
 		);
     
 		// WooCommerce Extra Checkout Fields for Brazil person type fields.
