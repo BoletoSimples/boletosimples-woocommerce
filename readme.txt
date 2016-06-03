@@ -3,7 +3,7 @@
 **Tags:** checkout, billet, boleto, boletosimples  
 **Requires at least:** 3.5  
 **Tested up to:** 3.9
-**Stable tag:** 1.0.1  
+**Stable tag:** 2.0.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -35,7 +35,7 @@ Instalar é bem simples, basta seguir o nosso [guia de instalação](http://word
 
 ### Compatibilidade ###
 
-Compatível com as versões 2.0.x e 2.1.x do WooCommerce.
+Compatível com as versões 2.5.x WooCommerce.
 
 ### Dúvidas? ###
 
@@ -59,8 +59,8 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 ### Configuração do Boleto Simples ###
 
 1. Crie uma conta no [Boleto Simples](http://boletosimples.com.br/);
-2. Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
-3. E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
+2. Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api/tokens);
+3. Crie um [Novo WebHook](https://boletosimples.com.br/conta/api/webhooks) e em **Endereço para o Payload (URL)** preencha com `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway` onde seusite.com.br deve ser trocado para o site da sua loja. Nos eventos deixe marcado apenas **Todos os eventos de boleto (atuais e futuros).**;
 4. Pronto, conta configurada.
 
 ### Configuração do plugin ###
@@ -87,10 +87,10 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 
 ### O que eu preciso para utilizar este plugin? ###
 
-* Ter instalado o WooCommerce 2.0.x ou superior.
+* Ter instalado o WooCommerce 2.5.x ou superior.
 * Ter instalado o https://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/
-* Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api);
-* E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
+* Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api/tokens);
+* E configure um [Novo WebHook](https://boletosimples.com.br/conta/api/webhooks);
 * Pronto, conta configurada.
 
 ### O que é o Boleto Simples? ###
@@ -170,24 +170,6 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 	add_filter( 'woocommerce_boletosimples_thankyou_page_instructions', 'custom_woocommerce_boletosimples_thankyou_page_instructions', 10, 2 );
 
 
-### Alterar as instruções do boleto no e-mail: ###
-
-
-	/**
-	 * Customizar as instruções sobre o boleto no e-mail.
-	 *
-	 * @param  string   $message Mensagem padrão do plugin.
-	 * @param  WC_Order $order   Objeto que contém todas as informações do pedido.
-	 *
-	 * @return string            Novas instruções.
-	 */
-	function custom_woocommerce_boletosimples_email_instructions( $message, $order ) {
-		return 'Novas instruções';
-	}
-
-	add_filter( 'woocommerce_boletosimples_email_instructions', 'custom_woocommerce_boletosimples_email_instructions', 10, 2 );
-
-
 ### Alterar as instruções do boleto para pedidos que estão aguardando pagamento: ###
 
 
@@ -214,7 +196,7 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 
 ## Changelog ##
 
-### 1.0.0 ###
+### 2.0.1 ###
 
 * Versão inicial.
 

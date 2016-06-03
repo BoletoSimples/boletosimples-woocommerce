@@ -196,7 +196,7 @@ Acesse a [FAQ do Boleto Simples](http://suporte.boletosimples.com.br/hc/pt-br).
 
 ## Changelog ##
 
-### 2.0.0 ###
+### 2.0.1 ###
 
 * Versão inicial.
 
