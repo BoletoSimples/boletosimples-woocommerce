@@ -60,7 +60,7 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 
 1. Crie uma conta no [Boleto Simples](http://boletosimples.com.br/);
 2. Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api/tokens);
-3. E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
+3. Crie um [Novo WebHook](https://boletosimples.com.br/conta/api/webhooks) e em **Endereço para o Payload (URL)** preencha com `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway` onde seusite.com.br deve ser trocado para o site da sua loja. Nos eventos deixe marcado apenas **Todos os eventos de boleto (atuais e futuros).**;
 4. Pronto, conta configurada.
 
 ### Configuração do plugin ###
@@ -90,7 +90,7 @@ Você pode contribuir com código-fonte em nossa página no [GitHub](https://git
 * Ter instalado o WooCommerce 2.5.x ou superior.
 * Ter instalado o https://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/
 * Com a conta é possível gerar um Token em [Boleto Simples - API](https://boletosimples.com.br/conta/api/tokens);
-* E configure a **URL para notificação** como por exemplo `http://seusite.com.br/?wc-api=WC_BoletoSimples_Gateway`;
+* E configure um [Novo WebHook](https://boletosimples.com.br/conta/api/webhooks);
 * Pronto, conta configurada.
 
 ### O que é o Boleto Simples? ###
