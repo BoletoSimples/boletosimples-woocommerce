@@ -11,7 +11,7 @@
  * Plugin Name:       Boleto Simples for WooCommerce
  * Plugin URI:        https://github.com/BoletoSimples/boletosimples-woocommerce
  * Description:       Start getting money by bank billet in your checking account using Boleto Simples
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            Boleto Simples
  * Author URI:        http://boletosimples.com.br/
  * Text Domain:       boletosimples-woocommerce
@@ -24,7 +24,7 @@
 /**
  * WooCommerce is missing notice.
  *
- * @since  1.0.0
+ * @since  2.0.1
  *
  * @return string WooCommerce is missing notice.
  */
@@ -35,7 +35,7 @@ function wc_boletosimples_woocommerce_is_missing() {
 /**
  * Initialize the Boleto Simples gateway.
  *
- * @since  1.0.0
+ * @since  2.0.1
  *
  * @return void
  */

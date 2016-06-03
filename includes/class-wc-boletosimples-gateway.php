@@ -13,7 +13,7 @@
  *
  * @package WC_BoletoSimples_Gateway
  * @author  Kivanio Barbosa <kivanio@boletosimples.com.br>
- * @since   2.0.0
+ * @since   2.0.1
  */
 class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 
@@ -25,13 +25,13 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	public function __construct() {
 		$this->id                 = 'boletosimples';
 		$this->plugin_slug        = 'boletosimples-woocommerce';
-    $this->version            = '2.0.0';
+    $this->version            = '2.0.1';
 		$this->icon               = apply_filters( 'woocommerce_boletosimples_icon', '' );
 		$this->has_fields         = false;
 		$this->method_title       = __( 'Boleto Simples', $this->plugin_slug );
 		$this->method_description = __( 'Start getting money by bank billet in using Boleto Simples', $this->plugin_slug );
 
-		// API.
+    // API.
     $this->api_url = 'https://boletosimples.com.br/api/v1/';
     $this->sandbox_url = 'https://sandbox.boletosimples.com.br/api/v1/';
 
@@ -49,7 +49,6 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		$this->debug            = $this->get_option( 'debug' );
 		$this->testmode         = $this->get_option( 'testmode' );
 		$this->email            = $this->get_option( 'email' );
-    $this->notification_url = $this->get_option( 'notification_url' );
     $this->contract_id      = $this->get_option( 'contract_id' );
     
 		// Actions.
@@ -75,7 +74,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Backwards compatibility with version prior to 2.1.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return object Returns the main instance of WooCommerce class.
 	 */
@@ -91,7 +90,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Displays notifications when the admin has something wrong with the configuration.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return void
 	 */
@@ -112,7 +111,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Returns a bool that indicates if currency is amongst the supported ones.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return bool
 	 */
@@ -125,7 +124,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	 * automatically by WooCommerce before allowing customers to use the gateway
 	 * for payment.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return bool
 	 */
@@ -141,7 +140,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Add error message in checkout.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  string $message Error message.
 	 *
@@ -158,7 +157,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Initialise Gateway Settings Form Fields.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return void
 	 */
@@ -219,12 +218,6 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 				'description' => __( 'Please enter your Contract ID. This is needed to create the billet.', $this->plugin_slug ) . '<br />' . sprintf( __( 'You can find out the ID by clicking %s.', $this->plugin_slug ), '<a href="https://boletosimples.com.br/carteiras" target="_blank">' . __( 'here', $this->plugin_slug ) . '</a>' ),
 				'default'     => ''
 			),
-			'notification_url' => array(
-				'title'       => __( 'Notification URL', $this->plugin_slug ),
-				'type'        => 'text',
-				'description' => __( 'If you want to be notified of bank billet changes such Paid, Cancel and etc. You need configure the url will receive the notification.', $this->plugin_slug ),
-				'default'     => ''
-			),
 			'testing' => array(
 				'title'       => __( 'Gateway Testing', $this->plugin_slug ),
 				'type'        => 'title',
@@ -243,7 +236,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Create the payment data.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  WC_Order $order Order data.
 	 *
@@ -269,7 +262,6 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
        
 			// Document data.
 			'description'            => $product_list,
-			'notification_url'       => $this->notification_url,
       'customer_email'         => $order->billing_email,
 			'meta'                   => 'order-' . $order->id,
       'expire_at'              => date( 'd/m/Y', time() + ( $this->days_to_pay * 86400 ) ),
@@ -323,7 +315,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Generate the billet on Boleto Simples.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  WC_Order $order Order data.
 	 *
@@ -394,7 +386,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Process the payment and return the result.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  int    $order_id Order ID.
 	 *
@@ -442,7 +434,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Adds payment instructions on thankyou page.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  int    $order_id Order ID.
 	 *
@@ -471,7 +463,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Adds payment instructions on customer email.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  WC_Order $order         Order data.
 	 * @param  bool     $sent_to_admin Sent to admin.
@@ -507,21 +499,40 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Check API Response.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return void
-	 */
-	public function check_webhook_notification() {
-		@ob_clean();
+  */
+  public function check_webhook_notification() {
+    @ob_clean();
 
-		header( 'HTTP/1.1 200 OK' );
-		do_action( 'woocommerce_boletosimples_webhook_notification', $_POST );
-	}
+    $body = file_get_contents( 'php://input' );
+    $jsonBody = json_decode( $body, true );
+
+    if ( 'yes' == $this->debug ) {
+      $this->log->add( $this->id, 'Novo Webhook chamado: ' . print_r( $jsonBody, true ) );
+    }
+    if( is_null( $jsonBody ) OR empty( $jsonBody['event_code'] ))
+      throw new Exception('Falha ao interpretar JSON do webhook: Evento do Webhook não encontrado!');
+
+    header( 'HTTP/1.1 200 OK' );
+
+    $event_code = $jsonBody['event_code'];
+
+    if ( 'yes' == $this->debug ) {
+      $this->log->add( $this->id, 'Evento: ' . print_r( $event_code, true ) );
+    }
+
+    if ( 'bank_billet.paid' == $event_code ) {
+      $data = $jsonBody['object'];
+      do_action( 'woocommerce_boletosimples_webhook_notification', $data );
+    }
+  }
 
 	/**
 	 * Successful notification.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @param  array $data $_POST data from the webhook.
 	 *
@@ -538,11 +549,15 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 		if ( 'yes' == $this->debug ) {
 			$this->log->add( $this->id, 'Updating to processing the status of the order ' . $order->get_order_number() );
 		}
-        
+
 		update_post_meta( $order->id, 'boletosimples_url', $data['url'] );
 
 		// Complete the order.
     if ( 'paid' == $data['status'] ) {
+			// Save billet paid data in order meta.
+			update_post_meta( $order->id, 'boletosimples_paid_amount', number_format(floatval($data['paid_amount']), 2, ',', '.' ));
+			update_post_meta( $order->id, 'boletosimples_paid_at', implode('/', array_reverse(explode('-', $data['paid_at']))));
+
 		  $order->add_order_note( __( 'Boleto Simples: Payment approved.', $this->plugin_slug ) );
 		  $order->payment_complete();
     }
@@ -551,7 +566,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Gets the admin url.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return string
 	 */
@@ -566,7 +581,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Adds error message when not configured the token.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return string Error Mensage.
 	 */
@@ -577,7 +592,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Adds error message when not configured the security code.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return string Error Mensage.
 	 */
@@ -588,7 +603,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Adds error message when an unsupported currency is used.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.1
 	 *
 	 * @return string
 	 */
