@@ -146,7 +146,7 @@ class WC_BoletoSimples_Gateway extends WC_Payment_Gateway {
 	 *
 	 * @return string          Displays the error message.
 	 */
-	protected function add_error( $message ) {
+	public function add_error( $message ) {
 		if ( version_compare( $this->woocommerce_instance()->version, '2.1', '>=' ) ) {
 			wc_add_notice( $message, 'error' );
 		} else {
